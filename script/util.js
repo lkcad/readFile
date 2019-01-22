@@ -1,12 +1,12 @@
 const fs = require('fs');
 
-const fileExists=(pth,mode)=>{
+const fileExists = (pth, mode) => {
     try {
-        console.error(1111111111,pth);
-        fs.accessSync(pth,mode);
+        console.error(1111111111, pth);
+        fs.accessSync(pth, mode);
         return true;
-    }catch (e) {
-        console.error(2222222222222,e)
+    } catch (e) {
+        console.error(2222222222222, e)
         return false
     }
 };
@@ -23,9 +23,9 @@ const readFilePromise = (path, options) => (
     }))
 );
 
-const writeFilePromise = (path,data, options) => (
+const writeFilePromise = (path, data, options) => (
     new Promise(((resolve, reject) => {
-        fs.writeFile(path,data,options,(err)=>{
+        fs.writeFile(path, data, options, (err) => {
             if (err) {
                 reject(err);
             } else {
@@ -36,7 +36,7 @@ const writeFilePromise = (path,data, options) => (
 );
 const readdirPromise = (path, options) => (
     new Promise(((resolve, reject) => {
-        fs.readdir(path,options,(err,data)=>{
+        fs.readdir(path, options, (err, data) => {
             if (err) {
                 reject(err);
             } else {
@@ -45,4 +45,10 @@ const readdirPromise = (path, options) => (
         });
     }))
 );
-module.exports={fileExists,readFilePromise,writeFilePromise,readdirPromise};
+
+const hump = (str) => {
+    return str.replace(/_([a-z])/ig, ($, $2) => {
+        return $2.toUpperCase()
+    })
+};
+module.exports = {fileExists, readFilePromise, writeFilePromise, readdirPromise, hump};

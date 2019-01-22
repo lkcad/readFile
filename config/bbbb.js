@@ -1,2 +1,9 @@
-const b=999;
-console.log(b*b)
+const {type} = require('../const/const')
+
+module.exports={
+    templateName:'actionList.js',
+    type:type.ACTION,
+    rule:{
+        componentName:'ALJJJ',
+    }
+};
