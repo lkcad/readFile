@@ -14,16 +14,16 @@ const config=configs['ajax'];
 const template=templateMap[config.templateName];
 
 
-const {content:fileContent,fileName} = getContent({
+getContent({
   rule:config,
-  content:template.content
-});
+  content:template.content,
+  templateMap
+}).forEach(({content:fileContent,fileName})=>{
+  const fileNameL=fileName||moment().format('YYYYMMDD_HHmmss')
+  writeFilePromise(`${fileOutputPath + fileNameL}.js`, fileContent, {}).then(()=>{
+    console.error('yiWanCheng')
+  }).catch((err)=>{
+    console.log(err)
+  });
+})
 
-const fileNameL=fileName||moment().format('YYYYMMDD_HHmmss')
-console.log(config,33333333,);
-
-writeFilePromise(`${fileOutputPath + fileNameL}.js`, fileContent, {}).then(()=>{
-console.error('yiWanCheng')
-}).catch((err)=>{
-  console.log(err)
-});

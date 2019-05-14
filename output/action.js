@@ -1,9 +1,9 @@
-export const acGetList = ({
+export const acGetList88 = ({
     scheduleTime,title,pageNum,offset
 }={}) => ({
     API: {
         type: ActionTypes.PS_GET_PUSH_MESSAGE_LIST,
-        endpoint: '/aaaa/sadsad/sadasd',
+        endpoint: '/lorem',
         params: {
             schedule_time : scheduleTime,
             title : title,
@@ -12,6 +12,7 @@ export const acGetList = ({
         },
         normalizeFunc: json => ({
             ...normalize(json.data.push_plans,Schemas.PC_MESSAGE_LIST),
+            ...normalize(json.data.push_plans.asdsadsa,Schemas.PC_MESSAGE_LIST2),
             total: json.data.total
         }),
     },
